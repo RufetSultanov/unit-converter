@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v7.0.2
         with:
           name: unit-converter
-          retention-days: 7
+          retention-days: 30
           if-no-files-found: error
           include-hidden-files: true
           path: |
