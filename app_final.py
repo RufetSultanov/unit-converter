@@ -57,3 +57,49 @@ def convert_temperature(
         "result": round(fahrenheit, 4),
         "to_unit": "fahrenheit",
     }
+
+
+@app.get("/convert/distance", tags=["Преобразования"])
+def convert_distance(
+    kilometers: Annotated[
+        float,
+        Query(
+            ge=0,
+            le=1e12,
+            allow_inf_nan=False,
+            description="Расстояние в километрах",
+        ),
+    ],
+):
+    """Перевести километры в международные мили."""
+    miles = kilometers / 1.609344
+
+    return {
+        "input": kilometers,
+        "from_unit": "kilometers",
+        "result": round(miles, 4),
+        "to_unit": "miles",
+    }
+
+
+@app.get("/convert/weight", tags=["Преобразования"])
+def convert_weight(
+    kilograms: Annotated[
+        float,
+        Query(
+            ge=0,
+            le=1e12,
+            allow_inf_nan=False,
+            description="Масса в килограммах",
+        ),
+    ],
+):
+    """Перевести килограммы в фунты."""
+    pounds = kilograms / 0.45359237
+
+    return {
+        "input": kilograms,
+        "from_unit": "kilograms",
+        "result": round(pounds, 4),
+        "to_unit": "pounds",
+    }
