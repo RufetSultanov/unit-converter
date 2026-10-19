@@ -55,4 +55,5 @@ jobs:
           path: |
             app_final.py
             requirements.txt
+            README.md
             .env.example
